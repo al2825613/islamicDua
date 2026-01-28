@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.demo.islamicprayer">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+
+    <application
+        android:name="com.demo.islamicprayer.Appcompany.App"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/icon200"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.IslamicDua"
+        android:usesCleartextTraffic="true">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_key" />
+
+        <activity
+            android:name="com.demo.islamicprayer.Appcompany.SplashActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.demo.islamicprayer.Appcompany.Privacy_Policy_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.TodayDuaActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.NotificationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name="com.demo.islamicprayer.MapActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.HajjDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.ZakatActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name="com.demo.islamicprayer.HajjJourneyActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.DuaFavoriteActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.QuranFavoriteActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.PrayerAlarmActivity"
+            android:screenOrientation="portrait"
+            android:showOnLockScreen="true"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true" />
+        <activity
+            android:name="com.demo.islamicprayer.AllPrayerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.SelectDhikrActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.TasbihCounterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.QuranActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.ChangeLocationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.QuranCategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.AllahNameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.DuaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.DuaTopicActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.HijriCalender.HijriCalenderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.HijriCalender.calendarevents"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.HijriCalender.calendarevents2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.DuaCategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.CompassActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.PrayerTimeConfigureActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.demo.islamicprayer.AthkarActivity"
+            android:screenOrientation="portrait" />
+
+        <service android:name="com.demo.islamicprayer.Service.FetchAddressIntentServices" />
+        <service android:name="com.demo.islamicprayer.Service.PrayerTimeService" />
+
+        <receiver
+            android:name="com.demo.islamicprayer.Receiver.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+    </application>
+</manifest>

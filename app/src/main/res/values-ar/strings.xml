@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">أدعية إسلامية - قرآن وصلاة</string>
+    <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="map_key">AIzaSyBsPsKntpOiU__u-mIABxL7aunWwap2drs</string>
+    
+    <!-- نصوص إضافية للترجمة -->
+    <string name="fajr">الفجر</string>
+    <string name="sunrise">الشروق</string>
+    <string name="dhuhr">الظهر</string>
+    <string name="asr">العصر</string>
+    <string name="maghrib">المغرب</string>
+    <string name="isha">العشاء</string>
+    <string name="upnext">التالي</string>
+    <string name="no_internet">لا يوجد اتصال بالإنترنت</string>
+    <string name="share_text">مرحباً! أنا أستخدم تطبيق أدعية إسلامية الرائع. جربه من هنا:</string>
+    <string name="share_with_friends">مشاركة مع الأصدقاء</string>
+    <string name="morning">الصباح</string>
+    <string name="evening">المساء</string>
+    <string name="loading">جاري التحميل...</string>
+    <string name="copy">تم النسخ</string>
+    <string name="error">خطأ</string>
+</resources>

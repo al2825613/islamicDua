@@ -17,7 +17,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import java.io.File;
+import java.io.FileOutputStream;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
@@ -33,6 +38,7 @@ public class TasbihCounterActivity extends AppCompatActivity {
     LinearLayout btnCount;
     LinearLayout btnDhikar;
     LinearLayout btnReset;
+    LinearLayout btnShareImage;
     CircularProgressIndicator circular_progress;
     DatabaseAccess databaseAccess;
     RelativeLayout layout;
@@ -69,6 +75,7 @@ public class TasbihCounterActivity extends AppCompatActivity {
         this.btnCount = (LinearLayout) findViewById(R.id.btnCount);
         this.btnChangeCounter = (LinearLayout) findViewById(R.id.btnChangeCounter);
         this.btnDhikar = (LinearLayout) findViewById(R.id.btnDhikar);
+        this.btnShareImage = (LinearLayout) findViewById(R.id.btnShareImage);
         this.tvEnglishName = (TextView) findViewById(R.id.tvEnglishName);
         this.tvArabicName = (TextView) findViewById(R.id.tvArabicName);
         this.tvEnglishMeaning = (TextView) findViewById(R.id.tvEnglishMeaning);
@@ -111,6 +118,12 @@ public class TasbihCounterActivity extends AppCompatActivity {
             @Override 
             public void onClick(View view) {
                 TasbihCounterActivity.this.startActivity(new Intent(TasbihCounterActivity.this.getApplicationContext(), SelectDhikrActivity.class));
+            }
+        });
+        this.btnShareImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareLayoutAsImage();
             }
         });
     }
@@ -211,6 +224,38 @@ public class TasbihCounterActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(menuItem);
+        }
+    }
+
+    private void shareLayoutAsImage() {
+        View view = getWindow().getDecorView().getRootView();
+        
+        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        view.draw(canvas);
+
+        try {
+            File cachePath = new File(getCacheDir(), "images");
+            cachePath.mkdirs();
+            FileOutputStream stream = new FileOutputStream(cachePath + "/image.png");
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            stream.close();
+
+            File imagePath = new File(getCacheDir(), "images");
+            File newFile = new File(imagePath, "image.png");
+            Uri contentUri = FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", newFile);
+
+            if (contentUri != null) {
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                shareIntent.setDataAndType(contentUri, getContentResolver().getType(contentUri));
+                shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+                startActivity(Intent.createChooser(shareIntent, "مشاركة الذكر كصورة"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "حدث خطأ أثناء المشاركة", Toast.LENGTH_SHORT).show();
         }
     }
 

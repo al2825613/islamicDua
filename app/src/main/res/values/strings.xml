@@ -2,6 +2,20 @@
 <resources>
     <string name="app_name">Islamic Dua - Quran Athan Prayer</string>
     <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
-<!--    <string name="map_key">AIzaSyAfsnWRYxf6MduXV89W5lnjA5DhcBVnDHY</string>-->
     <string name="map_key">AIzaSyBsPsKntpOiU__u-mIABxL7aunWwap2drs</string>
+    <string name="asr">Asr</string>
+    <string name="copy">Copy</string>
+    <string name="dhuhr">Dhuhr</string>
+    <string name="error">Error</string>
+    <string name="evening">Evening</string>
+    <string name="fajr">Fajr</string>
+    <string name="isha">Isha</string>
+    <string name="loading">Loading...</string>
+    <string name="maghrib">Maghrib</string>
+    <string name="morning">Morning</string>
+    <string name="no_internet">No Internet</string>
+    <string name="share_text">Hi! I am using Islamic Dua app.</string>
+    <string name="share_with_friends">Share with friends</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="upnext">Up Next</string>
 </resources>

@@ -192,6 +192,26 @@
                                             android:gravity="center">
 
                                             <LinearLayout
+                                                android:id="@+id/btnShareImage"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="30dp"
+                                                android:layout_marginEnd="10dp"
+                                                android:background="@drawable/round_corner_square_5"
+                                                android:backgroundTint="@color/green"
+                                                android:gravity="center_vertical"
+                                                android:paddingStart="10dp"
+                                                android:paddingEnd="10dp">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:fontFamily="@font/biko_regular_400"
+                                                    android:text="مشاركة كصورة"
+                                                    android:textColor="@color/white"
+                                                    android:textSize="12dp" />
+                                            </LinearLayout>
+
+                                            <LinearLayout
                                                 android:id="@+id/btnDhikar"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="30dp"

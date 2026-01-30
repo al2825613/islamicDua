@@ -13,7 +13,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import java.io.File;
+import java.io.FileOutputStream;
 import androidx.appcompat.widget.Toolbar;
 
 import com.demo.islamicprayer.Appcompany.Privacy_Policy_activity;
@@ -29,6 +34,7 @@ public class TodayDuaActivity extends AppCompatActivity {
     int id;
     ImageView ivFavorite;
     ImageView ivShare;
+    ImageView ivShareImage;
     TextView tvDua;
     TextView tvEnglishMeaning;
     TextView tvReference;
@@ -53,6 +59,7 @@ public class TodayDuaActivity extends AppCompatActivity {
         this.tvReference = (TextView) findViewById(R.id.tvReference);
         this.ivFavorite = (ImageView) findViewById(R.id.ivFavorite);
         this.ivShare = (ImageView) findViewById(R.id.ivShare);
+        this.ivShareImage = (ImageView) findViewById(R.id.ivShareImage);
         this.id = PrayerTimeService.duaId;
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         this.databaseAccess = databaseAccess;
@@ -86,6 +93,14 @@ public class TodayDuaActivity extends AppCompatActivity {
                 Util.shareText(TodayDuaActivity.this, TodayDuaActivity.this.duaModel.getDua() + "\n\n" + TodayDuaActivity.this.duaModel.getTranslation() + "\n\n" + TodayDuaActivity.this.duaModel.getEnMeaning());
             }
         });
+        if (this.ivShareImage != null) {
+            this.ivShareImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    shareLayoutAsImage();
+                }
+            });
+        }
     }
 
     @Override 
@@ -139,6 +154,36 @@ public class TodayDuaActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(menuItem);
+        }
+    }
+
+    private void shareLayoutAsImage() {
+        View view = getWindow().getDecorView().getRootView();
+        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        view.draw(canvas);
+
+        try {
+            File cachePath = new File(getCacheDir(), "images");
+            cachePath.mkdirs();
+            FileOutputStream stream = new FileOutputStream(cachePath + "/image_dua.png");
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            stream.close();
+
+            File newFile = new File(new File(getCacheDir(), "images"), "image_dua.png");
+            Uri contentUri = FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", newFile);
+
+            if (contentUri != null) {
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                shareIntent.setDataAndType(contentUri, getContentResolver().getType(contentUri));
+                shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+                startActivity(Intent.createChooser(shareIntent, "مشاركة الذكر كصورة"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "حدث خطأ أثناء المشاركة", Toast.LENGTH_SHORT).show();
         }
     }
 

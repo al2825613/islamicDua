@@ -91,9 +91,9 @@ public class PrayerTimeService extends Service {
     public void showNotification(Context context) {
         PendingIntent activity = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), Build.VERSION.SDK_INT >= 31 ? PendingIntent.FLAG_MUTABLE : PendingIntent.FLAG_ONE_SHOT);
         if (Build.VERSION.SDK_INT >= 26) {
-            startForeground(2, new NotificationCompat.Builder(this, App.CHANNEL_ID).setContentTitle("Islamic Dua Prayer Time Running").setPriority(1).setContentText("Service Started").setSmallIcon(R.drawable.noti_icon).setContentIntent(activity).setCategory(Context.ALARM_SERVICE).build());
+            startForeground(2, new NotificationCompat.Builder(this, App.CHANNEL_ID).setContentTitle("تطبيق الأذكار يعمل في الخلفية").setPriority(1).setContentText("جاري متابعة مواقيت الصلاة").setSmallIcon(R.drawable.noti_icon).setContentIntent(activity).setCategory(Context.ALARM_SERVICE).build());
         } else {
-            ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).notify(2, new NotificationCompat.Builder(this).setContentTitle("Islamic Dua Prayer Time Running").setPriority(1).setContentText("Service Started").setSmallIcon(R.drawable.noti_icon).setContentIntent(activity).setCategory(Context.ALARM_SERVICE).build());
+            ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).notify(2, new NotificationCompat.Builder(this).setContentTitle("تطبيق الأذكار يعمل في الخلفية").setPriority(1).setContentText("جاري متابعة مواقيت الصلاة").setSmallIcon(R.drawable.noti_icon).setContentIntent(activity).setCategory(Context.ALARM_SERVICE).build());
         }
     }
 

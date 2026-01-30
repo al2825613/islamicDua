@@ -36,7 +36,14 @@ public class PrayerAlarmActivity extends AppCompatActivity {
         this.btnStop = (LinearLayout) findViewById(R.id.btnStop);
         this.tvPrayerName = (TextView) findViewById(R.id.tvPrayerName);
         this.tvPrayerTime = (TextView) findViewById(R.id.tvPrayerTime);
-        this.tvPrayerName.setText(this.prayerName);
+        String arabicPrayerName = this.prayerName;
+        if (this.prayerName.equals("Fajr")) arabicPrayerName = "الفجر";
+        else if (this.prayerName.equals("Sunrise")) arabicPrayerName = "الشروق";
+        else if (this.prayerName.equals("Dhuhr")) arabicPrayerName = "الظهر";
+        else if (this.prayerName.equals("Asr")) arabicPrayerName = "العصر";
+        else if (this.prayerName.equals("Maghrib")) arabicPrayerName = "المغرب";
+        else if (this.prayerName.equals("Isha")) arabicPrayerName = "العشاء";
+        this.tvPrayerName.setText(arabicPrayerName);
         this.tvPrayerTime.setText(this.prayerTime);
         final MediaPlayer create = MediaPlayer.create(this, (int) R.raw.adhan);
         create.setOnPreparedListener(new MediaPlayer.OnPreparedListener() { 

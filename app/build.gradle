@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
+
 android {
     compileSdkVersion 33
-
 
     defaultConfig {
         applicationId "com.demo.islamicprayer"
@@ -12,9 +12,18 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         resConfigs "en", "ar"
         multiDexEnabled true
-
-
+        vectorDrawables.useSupportLibrary = true
     }
+
+    signingConfigs {
+        release {
+            storeFile file("islamicdua.jks")
+            storePassword "Manus2026!"
+            keyAlias "islamicdua_alias"
+            keyPassword "Manus2026!"
+        }
+    }
+
     bundle {
         density {
             enableSplit true
@@ -26,8 +35,10 @@ android {
             enableSplit false
         }
     }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             debuggable false
             minifyEnabled true
             shrinkResources true
@@ -42,52 +53,25 @@ android {
         }
     }
 
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
-    defaultConfig {
-        vectorDrawables.useSupportLibrary = true
-    }
-
-
 }
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     implementation 'com.google.android.material:material:1.4.0'
-
-
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
-
     implementation "com.github.antonKozyriatskyi:CircularProgressIndicator:1.2.2"
     implementation "com.airbnb.android:lottie:4.1.0"
     implementation 'com.github.msarhan:ummalqura-calendar:1.1.7'
     implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.0'
     implementation 'joda-time:joda-time:2.12.5'
     implementation 'pub.devrel:easypermissions:3.0.0'
-
     implementation 'com.google.android.gms:play-services-ads:21.3.0'
-
-
-}
-
-android {
-    signingConfigs {
-        release {
-            storeFile file('islamicdua.jks')
-            storePassword 'Manus2026!'
-            keyAlias 'islamicdua_alias'
-            keyPassword 'Manus2026!'
-        }
-    }
-    buildTypes {
-        release {
-            signingConfig signingConfigs.release
-        }
-    }
 }

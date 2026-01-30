@@ -1,0 +1,35 @@
+RELEASE INFORMATION - ISLAMIC DUA APP
+=====================================
+
+1. KEYSTORE DATA:
+   - Store File: islamicdua.jks
+   - Store Password: Manus2026!
+   - Key Alias: islamicdua_alias
+   - Key Password: Manus2026!
+
+2. ADMOB IDENTIFIERS:
+   - App ID: ca-app-pub-1107570695085285~4419006867
+   - Banner Ad Unit: ca-app-pub-1107570695085285/7643936002
+   - Interstitial Ad Unit: ca-app-pub-1107570695085285/1154361543
+
+3. ADDED FEATURES & CUSTOMIZATIONS:
+   - Full Arabic localization for the main interface.
+   - Full RTL (Right-to-Left) support.
+   - Localized notification system for prayer times.
+   - Share Athkar as images feature.
+   - Localized electronic Tasbih counter.
+   - Updated AdMob advertising system with new IDs.
+
+4. BUILD CONFIGURATION:
+   - compileSdkVersion: 33
+   - minSdkVersion: 21
+   - targetSdkVersion: 33
+   - versionCode: 1
+   - versionName: "1.0"
+
+5. IMPORTANT NOTES FOR PUBLISHING:
+   - The app is ready for publishing on Google Play Console.
+   - All required permissions are included in AndroidManifest.xml.
+   - Supports Android 5.0 (API 21) and above.
+   - Signed APK and AAB files are generated in the build outputs.
+

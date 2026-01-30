@@ -182,41 +182,41 @@ public class PrayerTimeService extends Service {
         if (getUpcomingTime(prayerTimes.get(0))) {
             if (this.prayerSharedPreference.getFajrRing()) {
                 this.prayerTime = prayerTimes.get(0);
-                this.prayerName = "Fajr";
+                this.prayerName = getString(R.string.fajr);
                 return true;
             }
             return false;
         } else if (getUpcomingTime(prayerTimes.get(1))) {
             if (this.prayerSharedPreference.getSunriseRing()) {
                 this.prayerTime = prayerTimes.get(1);
-                this.prayerName = "Sunrise";
+                this.prayerName = getString(R.string.sunrise);
                 return true;
             }
             return false;
         } else if (getUpcomingTime(prayerTimes.get(2))) {
             if (this.prayerSharedPreference.getDururRing()) {
                 this.prayerTime = prayerTimes.get(2);
-                this.prayerName = "Dhuhr";
+                this.prayerName = getString(R.string.dhuhr);
                 return true;
             }
             return false;
         } else if (getUpcomingTime(prayerTimes.get(3))) {
             if (this.prayerSharedPreference.getAsrRing()) {
                 this.prayerTime = prayerTimes.get(3);
-                this.prayerName = "Asr";
+                this.prayerName = getString(R.string.asr);
                 return true;
             }
             return false;
         } else if (getUpcomingTime(prayerTimes.get(5))) {
             if (this.prayerSharedPreference.getMaghribRing()) {
                 this.prayerTime = prayerTimes.get(5);
-                this.prayerName = "Maghrib";
+                this.prayerName = getString(R.string.maghrib);
                 return true;
             }
             return false;
         } else if (getUpcomingTime(prayerTimes.get(6)) && this.prayerSharedPreference.getIshaRing()) {
             this.prayerTime = prayerTimes.get(6);
-            this.prayerName = "Isha";
+            this.prayerName = getString(R.string.isha);
             return true;
         } else {
             return false;
